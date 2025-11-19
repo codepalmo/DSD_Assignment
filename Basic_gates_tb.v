@@ -1,24 +1,18 @@
-module basic_gates_tb;
-  reg a, b;
-  wire and_out, or_out, not_a, nand_out, nor_out, xor_out, xnor_out;
+`timescale 1ns/1ps
+`include "basic_gates.v"
 
-  basic_gates uut(a, b, and_out, or_out, not_a, nand_out, nor_out, xor_out, xnor_out);
+module tb_basic_gates;
+reg a,b;
+wire and_out, or_out, not_a, nand_out, nor_out, xor_out, xnor_out;
+basic_gates U(.a(a),.b(b),.and_out(and_out),.or_out(or_out),.not_a(not_a),
+              .nand_out(nand_out),.nor_out(nor_out),.xor_out(xor_out),.xnor_out(xnor_out));
 
-  initial begin
-    $monitor("Time=%0t | a=%b b=%b | AND=%b OR=%b NOT=%b NAND=%b NOR=%b XOR=%b XNOR=%b",
-              $time, a, b, and_out, or_out, not_a, nand_out, nor_out, xor_out, xnor_out);
-
-    a=0; b=0;
-    #10 a=0; b=1;
-    #10 a=1; b=0;
-    #10 a=1; b=1;
-    #10 $finish;
-  end
-endmodule
-
-
-
-module Basic_gates_tb(
-
-    );
+initial begin
+  $dumpfile("dump.vcd"); $dumpvars(0,tb_basic_gates);
+  {a,b} = 2'b00; #10;
+  {a,b} = 2'b01; #10;
+  {a,b} = 2'b10; #10;
+  {a,b} = 2'b11; #10;
+  $finish;
+end
 endmodule
