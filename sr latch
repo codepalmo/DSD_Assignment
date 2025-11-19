@@ -1,0 +1,12 @@
+module sr_latch_nor(
+    input S,
+    input R,
+    output Q,
+    output Qbar
+);
+    wire q_int, qbar_int;
+    assign q_int = ~(R | qbar_int);
+    assign qbar_int = ~(S | q_int);
+    assign Q = q_int;
+    assign Qbar = qbar_int;
+endmodule
