@@ -1,14 +1,21 @@
-module basic_gates(input a, b, output and_out, or_out, not_a, nand_out, nor_out, xor_out, xnor_out);
-  assign and_out  = a & b;
-  assign or_out   = a | b;
-  assign not_a    = ~a;
-  assign nand_out = ~(a & b);
-  assign nor_out  = ~(a | b);
-  assign xor_out  = a ^ b;
-  assign xnor_out = ~(a ^ b);
+// basic_gates.v
+module basic_gates(
+    input  wire a,
+    input  wire b,
+    output wire and_out,
+    output wire or_out,
+    output wire not_a,
+    output wire nand_out,
+    output wire nor_out,
+    output wire xor_out,
+    output wire xnor_out
+);
+assign and_out  = a & b;
+assign or_out   = a | b;
+assign not_a    = ~a;
+assign nand_out = ~(a & b);
+assign nor_out  = ~(a | b);
+assign xor_out  = a ^ b;
+assign xnor_out = ~(a ^ b);
 endmodule
 
-module Basic_gates(
-
-    );
-endmodule
